@@ -1,13 +1,18 @@
 package com.bnta.manual_trader.models;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "customers")
 public class Customer{
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String address;
+
     @OneToMany(mappedBy = "purchases")
     private List<Purchase> purchases;
 
@@ -41,5 +46,14 @@ public class Customer{
 
     public void setPurchases(List<Purchase> purchases) {
         this.purchases = purchases;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", address='" + address + '\'' +
+                ", purchases=" + purchases +
+                '}';
     }
 }

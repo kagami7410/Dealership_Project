@@ -1,10 +1,20 @@
 package com.bnta.manual_trader.models;
 
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "dealers")
 public class Dealer {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private int permissionLvl;
+
+//    @Column
+//    @ManyToOne
     private Dealership dealership;
 
     public Dealer(int permissionLvl, Dealership dealership) {
@@ -39,4 +49,12 @@ public class Dealer {
         this.dealership = dealership;
     }
 
+    @Override
+    public String toString() {
+        return "Dealer{" +
+                "id=" + id +
+                ", permissionLvl=" + permissionLvl +
+                ", dealership=" + dealership +
+                '}';
+    }
 }

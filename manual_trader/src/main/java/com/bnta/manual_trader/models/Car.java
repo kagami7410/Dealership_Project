@@ -1,16 +1,30 @@
 package com.bnta.manual_trader.models;
 
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "cars")
 public class Car {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String bodyType;
+
+    @Column
     private String brand;
+
+    @Column
     private String colour;
+
+    @Column
     private int year;
+
+    @Column
     private double price;
 
     @ManyToOne

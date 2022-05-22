@@ -1,11 +1,19 @@
 package com.bnta.manual_trader.models;
 
-import javax.persistence.Id;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "users")
 public class User {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String emailAddress;
 
     public User(String name, String emailAddress) {

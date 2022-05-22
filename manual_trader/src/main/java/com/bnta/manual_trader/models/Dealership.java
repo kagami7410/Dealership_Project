@@ -1,12 +1,20 @@
 package com.bnta.manual_trader.models;
 
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
+@Entity
+@Table(name = "dealerships")
 public class Dealership {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column
     private String name;
+
+    @Column
     private String location;
 
     @OneToMany(mappedBy = "cars")
@@ -51,5 +59,15 @@ public class Dealership {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    @Override
+    public String toString() {
+        return "Dealership{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", location='" + location + '\'' +
+                ", cars=" + cars +
+                '}';
     }
 }

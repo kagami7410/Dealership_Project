@@ -4,13 +4,21 @@ import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+@Entity
+@Table(name = "purchases")
 public class Purchase {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private LocalDate date;
+
     @ManyToOne
     private Customer customer;
+
     @ManyToMany
-    @JoinTable(name = "car_Purchases",
+    @JoinTable(name = "car_purchases",
             joinColumns = {@JoinColumn(name = "purchase_id")},
             inverseJoinColumns = {@JoinColumn(name = "car_id")}
     )
@@ -56,5 +64,15 @@ public class Purchase {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "id=" + id +
+                ", date=" + date +
+                ", customer=" + customer +
+                ", cars=" + cars +
+                '}';
     }
 }
