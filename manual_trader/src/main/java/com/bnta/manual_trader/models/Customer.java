@@ -13,7 +13,7 @@ public class Customer{
     @Column
     private String address;
 
-    @OneToMany(mappedBy = "purchases")
+    @OneToMany(mappedBy = "customer")
     private List<Purchase> purchases;
 
     public Customer(String address, List<Purchase> purchases) {

@@ -1,4 +1,7 @@
 package com.bnta.manual_trader.repositories;
 
-public interface PurchaseRepository {
+import com.bnta.manual_trader.models.Purchase;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 }

@@ -1,6 +1,7 @@
 package com.bnta.manual_trader.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,13 +18,18 @@ public class Dealership {
     @Column
     private String location;
 
-    @OneToMany(mappedBy = "cars")
+    @OneToMany(mappedBy = "dealership")
     private List<Car> cars;
 
-    public Dealership(String name, String location, List<Car> cars) {
+    @OneToMany(mappedBy = "dealership")
+    private List<Dealer> dealers;
+
+    // Removed Cars and Dealers input in constructor
+    public Dealership(String name, String location) {
         this.name = name;
         this.location = location;
-        this.cars = cars;
+        this.cars = new ArrayList<>();
+        this.dealers = new ArrayList<>();
     }
 
     public Dealership() {

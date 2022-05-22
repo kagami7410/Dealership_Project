@@ -1,6 +1,9 @@
 package com.bnta.manual_trader.models;
 
+import org.hibernate.sql.Insert;
+
 import javax.persistence.*;
+import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,18 +15,18 @@ public class Purchase {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private LocalDate date;
 
     @ManyToOne
+    @JoinColumn(name = "customers_id")
     private Customer customer;
 
-    @ManyToMany
-    @JoinTable(name = "car_purchases",
-            joinColumns = {@JoinColumn(name = "purchase_id")},
-            inverseJoinColumns = {@JoinColumn(name = "car_id")}
-    )
+    @ManyToMany(mappedBy = "")
+    @JoinTable(name = "cars_purchases",
+            joinColumns = {@JoinColumn(name = "purchases_id", nullable = false)},
+            inverseJoinColumns = {@JoinColumn(name = "cars_id", nullable = false)})
     private List<Car> cars;
-
 
     public Purchase(LocalDate date, Customer customer, List<Car> cars) {
         this.date = date;

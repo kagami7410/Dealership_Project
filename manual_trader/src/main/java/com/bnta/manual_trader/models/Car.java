@@ -28,9 +28,10 @@ public class Car {
     private double price;
 
     @ManyToOne
+    @JoinColumn(name = "dealerships_id", nullable = false)
     private Dealership dealership;
 
-    @ManyToMany(mappedBy = "cars")
+    @ManyToMany(mappedBy = "")
     private List<Purchase> purchases;
 
     public Car(String bodyType, String brand, String colour, int year, double price, Dealership dealership) {
