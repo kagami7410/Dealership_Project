@@ -22,10 +22,11 @@ public class Dealership {
 
     @OneToMany(mappedBy = "dealership")
     @JsonIgnoreProperties("dealership")
+
     private List<Car> cars;
 
     @OneToMany(mappedBy = "dealership")
-    @JsonIgnoreProperties("dealerships")
+    @JsonIgnoreProperties("dealership")
     private List<Dealer> dealers;
 
     // Removed Cars and Dealers input in constructor
