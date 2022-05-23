@@ -16,12 +16,16 @@ public class CarController {
 
     @Autowired
     CarRepository carRepository;
-    
-    // GET
+
+
     @GetMapping
-    public ResponseEntity<List<Car>> getAllCars(){
+    public ResponseEntity<List<Car>> getAllCarsAndByBrand(@RequestParam(required = false, name = "brand") String brand ){
+        if (brand != null){
+            return new ResponseEntity(carRepository.findByBrand(brand), HttpStatus.OK);
+        }
         return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
     }
+
     
     // SHOW
     @GetMapping(value = "/{id}")
