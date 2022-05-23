@@ -31,7 +31,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "dealerships_id", nullable = false)
-    @JsonIgnoreProperties("dealership")
+    @JsonIgnoreProperties("cars")
     private Dealership dealership;
 
     @ManyToMany(mappedBy = "")

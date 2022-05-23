@@ -21,7 +21,6 @@ public class Dealership {
     private String location;
 
     @OneToMany(mappedBy = "dealership")
-    @JsonIgnoreProperties("cars")
     private List<Car> cars;
 
     @OneToMany(mappedBy = "dealership")
