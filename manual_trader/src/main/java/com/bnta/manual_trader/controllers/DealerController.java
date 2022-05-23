@@ -2,6 +2,7 @@ package com.bnta.manual_trader.controllers;
 
 import java.util.List;
 import com.bnta.manual_trader.models.Dealer;
+import com.bnta.manual_trader.models.Dealership;
 import com.bnta.manual_trader.repositories.DealerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,6 +21,17 @@ public class DealerController{
     public ResponseEntity<List<Dealer>> getAllDealers(){
         return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping
+    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Integer dealership) {
+        if(dealership != null) {
+            return new ResponseEntity<>(dealerRepository.findDealersByDealerships(dealership), HttpStatus.OK);
+        }
+        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
+    }
+
+
+
 
     // SHOW
     @GetMapping(value = "/{id}")

@@ -17,7 +17,10 @@ public class DealershipController {
     DealershipRepository dealershipRepository;
 
     @GetMapping
-    public ResponseEntity<List<Dealership>> getAllDealership(){
+    public ResponseEntity<List<Dealership>> getAllDealershipAndByLocation(@RequestParam(required = false, name ="location") String location){
+        if (location != null){
+            return new ResponseEntity<>(dealershipRepository.findDealershipByLocation(location), HttpStatus.OK);
+        }
         return new ResponseEntity<>(dealershipRepository.findAll(), HttpStatus.OK);
     }
 
