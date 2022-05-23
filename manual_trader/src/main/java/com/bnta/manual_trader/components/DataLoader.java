@@ -3,11 +3,9 @@ package com.bnta.manual_trader.components;
 import com.bnta.manual_trader.models.Car;
 import com.bnta.manual_trader.models.Dealer;
 import com.bnta.manual_trader.models.Dealership;
-import com.bnta.manual_trader.models.User;
 import com.bnta.manual_trader.repositories.CarRepository;
 import com.bnta.manual_trader.repositories.DealerRepository;
 import com.bnta.manual_trader.repositories.DealershipRepository;
-import com.bnta.manual_trader.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -26,9 +24,6 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     DealerRepository dealerRepository;
-
-    @Autowired
-    UserRepository userRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -63,14 +58,5 @@ public class DataLoader implements ApplicationRunner {
         Car car11 = new Car("Hatchback", "Ford", "Black", 2014, 7000, dealership4);
         Car car12 = new Car("Coupe", "Volvo", "White", 2013, 6000, dealership5);
         carRepository.saveAll(Arrays.asList(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10, car11, car12));
-
-        User user1 = new User("Anna", "anna@gmail.com");
-        User user2 = new User("Larry", "laryybird8374@gmail.com");
-        User user3 = new User("Kendall", "Kendi@gmail.com");
-        User user4 = new User("Hannah","Hannah1928@yahoo.com");
-        User user5 = new User("Hailey", "hailey74@outlook.com");
-        User user6 = new User("Andy", "Andy3834@hotmail.com");
-        User user7 = new User("Michael","Michael587@gmail.com");
-        userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7));
     }
 }

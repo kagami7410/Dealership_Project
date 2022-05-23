@@ -1,11 +1,7 @@
 package com.bnta.manual_trader.models;
 
-import org.hibernate.sql.Insert;
-
 import javax.persistence.*;
-import java.awt.*;
 import java.time.LocalDate;
-import java.util.List;
 
 @Entity
 @Table(name = "purchases")
@@ -22,17 +18,14 @@ public class Purchase {
     @JoinColumn(name = "customers_id")
     private Customer customer;
 
-    @ManyToMany(mappedBy = "")
-    @JoinTable(name = "cars_purchases",
-            joinColumns = {@JoinColumn(name = "purchases_id", nullable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "cars_id", nullable = false)})
+    @ManyToOne
+    @JoinColumn(name = "cars_id")
+    private Car carPurchased;
 
-    private List<Car> cars;
-
-    public Purchase(LocalDate date, Customer customer, List<Car> cars) {
+    public Purchase(LocalDate date, Customer customer, Car carPurchased) {
         this.date = date;
         this.customer = customer;
-        this.cars = cars;
+        this.carPurchased = carPurchased;
     }
 
     public Purchase() {
@@ -62,12 +55,12 @@ public class Purchase {
         this.customer = customer;
     }
 
-    public List<Car> getCars() {
-        return cars;
+    public Car getCarPurchased() {
+        return carPurchased;
     }
 
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
+    public void setCarPurchased(Car carPurchased) {
+        this.carPurchased = carPurchased;
     }
 
     @Override
@@ -76,7 +69,7 @@ public class Purchase {
                 "id=" + id +
                 ", date=" + date +
                 ", customer=" + customer +
-                ", cars=" + cars +
+                ", carPurchased=" + carPurchased +
                 '}';
     }
 }

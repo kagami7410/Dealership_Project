@@ -24,27 +24,23 @@ public class Car {
     private String colour;
 
     @Column
-    private int year;
+    private int carYear;
 
     @Column
     private double price;
 
     @ManyToOne
-    @JoinColumn(name = "dealerships_id", nullable = false)
+    @JoinColumn(name = "dealerships_id")
     @JsonIgnoreProperties("cars")
     private Dealership dealership;
 
-    @ManyToMany(mappedBy = "")
-    private List<Purchase> purchases;
-
-    public Car(String bodyType, String brand, String colour, int year, double price, Dealership dealership) {
+    public Car(String bodyType, String brand, String colour, int carYear, double price, Dealership dealership) {
         this.bodyType = bodyType;
         this.brand = brand;
         this.colour = colour;
-        this.year = year;
+        this.carYear = carYear;
         this.price = price;
         this.dealership = dealership;
-        this.purchases = new ArrayList<Purchase>();
     }
 
     public Car() {
@@ -82,12 +78,12 @@ public class Car {
         this.colour = colour;
     }
 
-    public int getYear() {
-        return year;
+    public int getCarYear() {
+        return carYear;
     }
 
-    public void setYear(int year) {
-        this.year = year;
+    public void setCarYear(int carYear) {
+        this.carYear = carYear;
     }
 
     public double getPrice() {
@@ -106,11 +102,16 @@ public class Car {
         this.dealership = dealership;
     }
 
-    public List<Purchase> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(List<Purchase> purchases) {
-        this.purchases = purchases;
+    @Override
+    public String toString() {
+        return "Car{" +
+                "id=" + id +
+                ", bodyType='" + bodyType + '\'' +
+                ", brand='" + brand + '\'' +
+                ", colour='" + colour + '\'' +
+                ", carYear=" + carYear +
+                ", price=" + price +
+                ", dealership=" + dealership +
+                '}';
     }
 }

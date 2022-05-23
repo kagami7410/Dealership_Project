@@ -22,13 +22,13 @@ public class DealerController{
         return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Integer dealership) {
-        if(dealership != null) {
-            return new ResponseEntity<>(dealerRepository.findDealersByDealerships(dealership), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Integer dealership) {
+//        if(dealership != null) {
+//            return new ResponseEntity<>(dealerRepository.findDealersByDealerships(dealership), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
+//    }
 
 
 

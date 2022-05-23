@@ -14,7 +14,7 @@ public class Dealer {
     private int permissionLvl;
 
     @ManyToOne
-    @JoinColumn(name = "dealerships_ids", nullable = false)
+    @JoinColumn(name = "dealerships_ids")
     private Dealership dealership;
 
     public Dealer(int permissionLvl, Dealership dealership) {
