@@ -1,5 +1,6 @@
 package com.bnta.manual_trader.controllers;
 
+
 import com.bnta.manual_trader.models.Car;
 import com.bnta.manual_trader.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
