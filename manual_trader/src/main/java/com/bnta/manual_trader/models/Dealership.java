@@ -1,5 +1,7 @@
 package com.bnta.manual_trader.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,6 +21,7 @@ public class Dealership {
     private String location;
 
     @OneToMany(mappedBy = "dealership")
+    @JsonIgnoreProperties("cars")
     private List<Car> cars;
 
     @OneToMany(mappedBy = "dealership")

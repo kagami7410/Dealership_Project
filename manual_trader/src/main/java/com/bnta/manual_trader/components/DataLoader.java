@@ -65,6 +65,12 @@ public class DataLoader implements ApplicationRunner {
         carRepository.saveAll(Arrays.asList(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10, car11, car12));
 
         User user1 = new User("Anna", "anna@gmail.com");
-        userRepository.save(user1);
+        User user2 = new User("Larry", "laryybird8374@gmail.com");
+        User user3 = new User("Kendall", "Kendi@gmail.com");
+        User user4 = new User("Hannah","Hannah1928@yahoo.com");
+        User user5 = new User("Hailey", "hailey74@outlook.com");
+        User user6 = new User("Andy", "Andy3834@hotmail.com");
+        User user7 = new User("Michael","Michael587@gmail.com");
+        userRepository.saveAll(Arrays.asList(user1, user2, user3, user4, user5, user6, user7));
     }
 }

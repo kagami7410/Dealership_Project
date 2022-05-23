@@ -26,6 +26,7 @@ public class Purchase {
     @JoinTable(name = "cars_purchases",
             joinColumns = {@JoinColumn(name = "purchases_id", nullable = false)},
             inverseJoinColumns = {@JoinColumn(name = "cars_id", nullable = false)})
+
     private List<Car> cars;
 
     public Purchase(LocalDate date, Customer customer, List<Car> cars) {

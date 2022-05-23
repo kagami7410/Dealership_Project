@@ -1,5 +1,7 @@
 package com.bnta.manual_trader.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "dealerships_id", nullable = false)
+    @JsonIgnoreProperties("dealership")
     private Dealership dealership;
 
     @ManyToMany(mappedBy = "")
