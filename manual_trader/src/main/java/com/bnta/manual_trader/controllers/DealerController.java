@@ -34,9 +34,10 @@ public class DealerController{
     }
 
     // DELETED
-    @DeleteMapping(value = "")
+    @DeleteMapping(value = "/remove/{id}")
     public ResponseEntity<String> deleteDealer(@PathVariable Long id){
-        return new
+        dealerRepository.deleteById(id);
+        return new ResponseEntity<>("Deleted Dealer " + id, HttpStatus.OK);
     }
 
 }

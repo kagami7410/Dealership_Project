@@ -15,10 +15,10 @@ public class PurchaseController {
     PurchaseRepository purchaseRepository;
 
 // GET
-
     public ResponseEntity<List<Car>> getAllPurchasedCars () {
         return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
     }
+
 
 
 
