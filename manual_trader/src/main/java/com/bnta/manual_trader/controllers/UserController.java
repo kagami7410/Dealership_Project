@@ -26,7 +26,7 @@ public class UserController {
     //Show
     @GetMapping(value ="/{id}")
     public ResponseEntity<List<User>> getUserByID(@PathVariable Long id){
-        return new ResponseEntity(userRepository.findByID(id), HttpStatus.OK);
+        return new ResponseEntity(userRepository.findById(id), HttpStatus.OK);
     }
 
     //Post

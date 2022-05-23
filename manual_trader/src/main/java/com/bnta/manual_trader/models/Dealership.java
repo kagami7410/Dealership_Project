@@ -21,9 +21,11 @@ public class Dealership {
     private String location;
 
     @OneToMany(mappedBy = "dealership")
+    @JsonIgnoreProperties("dealership")
     private List<Car> cars;
 
     @OneToMany(mappedBy = "dealership")
+    @JsonIgnoreProperties("dealerships")
     private List<Dealer> dealers;
 
     // Removed Cars and Dealers input in constructor
@@ -67,6 +69,14 @@ public class Dealership {
 
     public void setCars(List<Car> cars) {
         this.cars = cars;
+    }
+
+    public List<Dealer> getDealers() {
+        return dealers;
+    }
+
+    public void setDealers(List<Dealer> dealers) {
+        this.dealers = dealers;
     }
 
     @Override

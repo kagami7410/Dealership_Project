@@ -24,7 +24,7 @@ public class DealerController{
     // SHOW
     @GetMapping(value = "/{id}")
     public ResponseEntity<Dealer> getDealerById(@PathVariable Long id){
-        return new ResponseEntity<>(dealerRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity(dealerRepository.findById(id), HttpStatus.OK);
     }
 
     // POST

@@ -18,12 +18,12 @@ public class DealershipController {
 
     @GetMapping
     public ResponseEntity<List<Dealership>> getAllDealership(){
-        return new ResponseEntity<>(dealershipRepository.findall(), HttpStatus.OK);
+        return new ResponseEntity<>(dealershipRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Dealership> getDealership(@PathVariable Long id){
-        return new ResponseEntity<>(dealershipRepository.findById(id), HttpStatus.OK);
+        return new ResponseEntity(dealershipRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/new")
@@ -37,9 +37,6 @@ public class DealershipController {
         dealershipRepository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
     }
-
-
-
 
 
 }
