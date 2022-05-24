@@ -25,11 +25,11 @@ public class CustomerController {
         }
     }
 
-    // GET
-    @GetMapping
-    public ResponseEntity<List<Customer>> getAllCustomers() {
-        return new ResponseEntity(customerRepository.findAll(), HttpStatus.OK);
-    }
+//    // GET
+//    @GetMapping
+//    public ResponseEntity<List<Customer>> getAllCustomers() {
+//        return new ResponseEntity(customerRepository.findAll(), HttpStatus.OK);
+//    }
 
     @GetMapping(value = "/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {

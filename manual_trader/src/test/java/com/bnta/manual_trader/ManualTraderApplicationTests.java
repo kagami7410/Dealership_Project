@@ -33,7 +33,7 @@ class ManualTraderApplicationTests {
 		List<Car> carFoundByPriceGreaterThan = carRepository.findByPriceGreaterThan(10000.00);
 		assertThat(carFoundByPriceGreaterThan.size()).isEqualTo(17);
 
-		List<Car> carFoundByCarYear = carRepository.findByCarYear(2020);
+		List<Car> carFoundByCarYear = carRepository.findByCarYearGreaterThan(2020);
 		assertThat(carFoundByCarYear.size()).isEqualTo(2);
 
 		List<Car> carFoundByColour = carRepository.findByColour("Red");

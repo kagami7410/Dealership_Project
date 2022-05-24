@@ -18,38 +18,38 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByBrandAndColour(String brand, String colour);
     List<Car> findByBrandAndBodyType(String brand, Bodytype bodyType);
-    List<Car> findByBrandAndCarYearGreaterThan(String brand, Integer year);
+    List<Car> findByBrandAndCarYearGreaterThan(String brand, Integer carYear);
     List<Car> findByBrandAndPriceGreaterThan(String brand, Double price);
     List<Car> findByBrandAndColourAndBodyType(String brand, String colour, Bodytype bodytype);
-    List<Car>findbyBrandAndColourAndPriceGreaterThan(String brand, String colour, Double price);
-    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThan(String brand, String colour, Bodytype bodytype, Integer year);
+    List<Car> findByBrandAndColourAndPriceGreaterThan(String brand, String colour, Double price);
+    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThan(String brand, String colour, Bodytype bodytype, Integer carYear);
     List<Car> findByBrandAndColourAndBodyTypeAndPriceGreaterThan(String brand, String colour, Bodytype bodytype, Double price);
-    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String brand, String colour, Bodytype bodytype, Integer year, Double price);
-    List<Car> findByBrandAndColourAndCarYearGreaterThan(String brand, String colour, Integer year);
+    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String brand, String colour, Bodytype bodytype, Integer carYear, Double price);
+    List<Car> findByBrandAndColourAndCarYearGreaterThan(String brand, String colour, Integer carYear);
 
-    List<Car> findByBodyTypeAndCarYearGreaterThanAndPrice(Bodytype bodytype, Integer year, Double price);
-    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThan(String brand, Bodytype bodytype, Integer year);
+    List<Car> findByBodyTypeAndCarYearGreaterThanAndPrice(Bodytype bodytype, Integer carYear, Double price);
+    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThan(String brand, Bodytype bodytype, Integer carYear);
     List<Car> findByBrandAndBodyTypeAndPriceGreaterThan(String brand, Bodytype bodytype, Double price);
-    List<Car> findByBrandAndCarYearGreaterThanAndPriceGreaterThan(String brand, Integer year, Double price);
+    List<Car> findByBrandAndCarYearGreaterThanAndPriceGreaterThan(String brand, Integer carYear, Double price);
 
-    List<Car> findByBrandAndColourAndCarYearGreaterThanAndPriceGreaterThan(String brand, String colour, Integer year, Double Price);
-    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String Brand, Bodytype bodytype, Integer year, Double Price);
+    List<Car> findByBrandAndColourAndCarYearGreaterThanAndPriceGreaterThan(String brand, String colour, Integer carYear, Double Price);
+    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String Brand, Bodytype bodytype, Integer carYear, Double Price);
 
 
     List<Car> findByColourAndBodyType(String colour, Bodytype bodytype);
-    List<Car> findByColourAndCarYearGreaterThan(String colour, Integer year);
+    List<Car> findByColourAndCarYearGreaterThan(String colour, Integer carYear);
     List<Car> findByColourAndPriceGreaterThan(String colour, Double price);
-    List<Car> findByColourAndBodyTypeAndCarYearGreaterThan(String colour, Bodytype bodytype, Integer year);
+    List<Car> findByColourAndBodyTypeAndCarYearGreaterThan(String colour, Bodytype bodytype, Integer carYear);
     List<Car> findByColourAndBodyTypeAndPriceGreaterThan(String colour, Bodytype bodytype, Double price);
-    List<Car> findByColourAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String colour, Bodytype bodytype, Integer year, Double price);
-    List<Car> findByColourAndCarYearGreaterThanAndPriceGreaterThan(String colour, Integer year, Double price);
+    List<Car> findByColourAndBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(String colour, Bodytype bodytype, Integer carYear, Double price);
+    List<Car> findByColourAndCarYearGreaterThanAndPriceGreaterThan(String colour, Integer carYear, Double price);
 
 
-    List<Car> findByBodyTypeAndCarYearGreaterThan(Bodytype bodytype, Integer year);
+    List<Car> findByBodyTypeAndCarYearGreaterThan(Bodytype bodytype, Integer carYear);
     List<Car> findByBodyTypeAndPriceGreaterThan(Bodytype bodyType, Double price);
 
-    List<Car> findByBodyTypeAndYearGreaterThanAndPriceGreaterThan(Bodytype bodytype, Integer year, Double price);
-    List<Car> findByCarYearGreaterThanAndPriceGreaterThan(Integer year, Double price);
+    List<Car> findByBodyTypeAndCarYearGreaterThanAndPriceGreaterThan(Bodytype bodytype, Integer carYear, Double price);
+    List<Car> findByCarYearGreaterThanAndPriceGreaterThan(Integer carYear, Double price);
 
 
 

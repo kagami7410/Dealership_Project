@@ -18,11 +18,11 @@ public class PurchaseController {
     @Autowired
     PurchaseRepository purchaseRepository;
 
-    // GET
-    @GetMapping
-    public ResponseEntity<List<Purchase>> getAllPurchasedCars() {
-        return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
-    }
+//    // GET
+//    @GetMapping
+//    public ResponseEntity<List<Purchase>> getAllPurchasedCars() {
+//        return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
+//    }
 
     // GET byDate
     @GetMapping

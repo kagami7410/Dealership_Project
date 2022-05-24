@@ -23,21 +23,21 @@ public class DealerController {
         return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping
-    public ResponseEntity<List<Dealer>> getAllDealersByName(@RequestParam(required = false, name = "name") String name) {
-        if(name != null) {
-            return new ResponseEntity(dealerRepository.findDealersByName(name), HttpStatus.OK);
-        }
-        return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Dealer>> getAllDealersByName(@RequestParam(required = false, name = "name") String name) {
+//        if(name != null) {
+//            return new ResponseEntity(dealerRepository.findDealerByName(name), HttpStatus.OK);
+//        }
+//        return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
+//    }
 
-    @GetMapping
-    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Dealership dealership) {
-        if(dealership != null) {
-            return new ResponseEntity<>(dealerRepository.findDealersByDealerships(dealership), HttpStatus.OK);
-        }
-        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Dealership dealership) {
+//        if(dealership != null) {
+//            return new ResponseEntity<>(dealerRepository.findDealerByDealership(dealership), HttpStatus.OK);
+//        }
+//        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
+//    }
 
 
     // SHOW
