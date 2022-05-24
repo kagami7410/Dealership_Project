@@ -15,30 +15,42 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 @SpringBootTest
 class ManualTraderApplicationTests {
 
-	@Autowired
-	CarRepository carRepository;
+    @Autowired
+    CarRepository carRepository;
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
-	@Test
-	public void canFindCarByAttribute(){
-		List<Car> carFoundByBrand = carRepository.findByBrand("BMW");
-		assertThat(carFoundByBrand.size()).isEqualTo(1);
+    @Test
+    public void canFindCarByBrand() {
+        List<Car> carFoundByBrand = carRepository.findByBrand("BMW");
+        assertThat(carFoundByBrand.size()).isEqualTo(1);
+    }
 
-		List<Car> carFoundByBodyType = carRepository.findByBodyType(Bodytype.CONVERTIBLE);
-		assertThat(carFoundByBodyType.size()).isEqualTo(3);
+    @Test
+    public void canFindCarByBodyType() {
+        List<Car> carFoundByBodyType = carRepository.findByBodyType(Bodytype.CONVERTIBLE);
+        assertThat(carFoundByBodyType.size()).isEqualTo(3);
+    }
 
-		List<Car> carFoundByPriceGreaterThan = carRepository.findByPriceGreaterThan(10000.00);
-		assertThat(carFoundByPriceGreaterThan.size()).isEqualTo(17);
+    @Test
+    public void canFindCarByPriceGreaterThan() {
+        List<Car> carFoundByPriceGreaterThan = carRepository.findByPriceGreaterThanEqual(10000.00);
+        assertThat(carFoundByPriceGreaterThan.size()).isEqualTo(17);
+    }
 
-		List<Car> carFoundByCarYear = carRepository.findByCarYearGreaterThan(2020);
-		assertThat(carFoundByCarYear.size()).isEqualTo(2);
+    @Test
+    public void canFindCarByCarYearGreaterThan() {
+        List<Car> carFoundByCarYear = carRepository.findByCarYearGreaterThanEqual(2020);
+        assertThat(carFoundByCarYear.size()).isEqualTo(3);
+    }
 
-		List<Car> carFoundByColour = carRepository.findByColour("Red");
-		assertThat(carFoundByColour.size()).isEqualTo(3);
-	}
+    @Test
+    public void canFindCarByColour() {
+        List<Car> carFoundByColour = carRepository.findByColour("Red");
+        assertThat(carFoundByColour.size()).isEqualTo(3);
+    }
 
 
 }
