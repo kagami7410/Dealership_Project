@@ -1,10 +1,8 @@
 package com.bnta.manual_trader.components;
 
-import com.bnta.manual_trader.models.Bodytype;
-import com.bnta.manual_trader.models.Car;
-import com.bnta.manual_trader.models.Dealer;
-import com.bnta.manual_trader.models.Dealership;
+import com.bnta.manual_trader.models.*;
 import com.bnta.manual_trader.repositories.CarRepository;
+import com.bnta.manual_trader.repositories.CustomerRepository;
 import com.bnta.manual_trader.repositories.DealerRepository;
 import com.bnta.manual_trader.repositories.DealershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +24,9 @@ public class DataLoader implements ApplicationRunner {
     @Autowired
     DealerRepository dealerRepository;
 
+    @Autowired
+    CustomerRepository customerRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
@@ -36,14 +37,14 @@ public class DataLoader implements ApplicationRunner {
         Dealership dealership5 = new Dealership("Amy's Dealership", "Nottingham");
         dealershipRepository.saveAll(Arrays.asList(dealership1, dealership2, dealership3, dealership4, dealership5));
 
-        Dealer dealer1 = new Dealer(1, dealership1);
-        Dealer dealer2 = new Dealer(1, dealership2);
-        Dealer dealer3 = new Dealer(1, dealership2);
-        Dealer dealer4 = new Dealer(1, dealership3);
-        Dealer dealer5 = new Dealer(1, dealership3);
-        Dealer dealer6 = new Dealer(1, dealership4);
-        Dealer dealer7 = new Dealer(1, dealership5);
-        Dealer dealer8 = new Dealer(1, dealership5);
+        Dealer dealer1 = new Dealer("Frank", dealership1);
+        Dealer dealer2 = new Dealer("Steven", dealership2);
+        Dealer dealer3 = new Dealer("Usman", dealership2);
+        Dealer dealer4 = new Dealer("Mary", dealership3);
+        Dealer dealer5 = new Dealer("Jessica", dealership3);
+        Dealer dealer6 = new Dealer("Susan", dealership4);
+        Dealer dealer7 = new Dealer("Charles", dealership5);
+        Dealer dealer8 = new Dealer("Karen", dealership5);
         dealerRepository.saveAll(Arrays.asList(dealer1, dealer2, dealer3, dealer4, dealer5, dealer6, dealer7, dealer8));
 
         Car car1 = new Car(Bodytype.COUPE, "BMW", "Red", 2020, 35999.99, dealership1);
@@ -74,5 +75,19 @@ public class DataLoader implements ApplicationRunner {
 
         carRepository.saveAll(Arrays.asList(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10, car11, car12,
                 car13, car14, car15, car16, car17, car18, car19, car20, car21, car22, car23, car24, car25));
+
+        Customer customer1 = new Customer("Jake", "jake123@hotmail.com");
+        Customer customer2 = new Customer("Linda", "linda45@yahoo.com");
+        Customer customer3 = new Customer("Scarlett", "scarlett987@gmail.com");
+        Customer customer4 = new Customer("Jamie", "jamie765@gmail.com");
+        Customer customer5 = new Customer("Elsie", "elsie65@yahoo.com");
+        Customer customer6 = new Customer("xavier", "xavier5@hotmail.com");
+        Customer customer7 = new Customer("Phil", "Phil2@gmail.com");
+        Customer customer8 = new Customer("Phillipa", "Phillipa2@gmail.com");
+        Customer customer9 = new Customer("Lauren", "Lauren142@yahoo.com");
+        Customer customer10 = new Customer("Henry","Henry435@gmail.com");
+
+        customerRepository.saveAll(Arrays.asList(customer1, customer2, customer3, customer4, customer5, customer6, customer7,
+                customer8, customer9,customer10));
     }
 }

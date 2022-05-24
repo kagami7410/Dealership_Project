@@ -26,6 +26,8 @@ class ManualTraderApplicationTests {
 		List<Car> carFoundByBrand = carRepository.findByBrand("BMW");
 		assertThat(carFoundByBrand.size()).isEqualTo(1);
 
+		List<Car> carFoundByBodyType = carRepository.findByBodyType();
+		assertThat(carFoundByBrand.size()).isEqualTo(1);
 	}
 
 }

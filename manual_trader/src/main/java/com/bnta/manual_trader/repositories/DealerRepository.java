@@ -9,4 +9,10 @@ import java.util.List;
 public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
     List<Dealer> findDealersByDealerships(Dealership dealership);
+
+    List<Dealer> getAllDealersByDealership(Dealership dealership);
+
+    List<Dealer> findDealersByName(String name);
+
+    List<Dealer> getAllDealersByName(String name);
 }

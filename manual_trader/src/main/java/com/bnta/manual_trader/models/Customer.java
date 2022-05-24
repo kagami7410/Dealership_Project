@@ -1,6 +1,7 @@
 package com.bnta.manual_trader.models;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -11,14 +12,18 @@ public class Customer{
     private Long id;
 
     @Column
-    private String address;
+    private String name;
+
+    @Column
+    private String emailAddress;
 
     @OneToMany(mappedBy = "customer")
     private List<Purchase> purchases;
 
-    public Customer(String address, List<Purchase> purchases) {
-        this.address = address;
-        this.purchases = purchases;
+    public Customer(String name, String emailAddress) {
+        this.name = name;
+        this.emailAddress = emailAddress;
+        this.purchases = new ArrayList<>();
     }
 
     public Customer() {
@@ -32,12 +37,20 @@ public class Customer{
         this.id = id;
     }
 
-    public String getAddress() {
-        return address;
+    public String getName() {
+        return name;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getEmailAddress() {
+        return emailAddress;
+    }
+
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
     }
 
     public List<Purchase> getPurchases() {
@@ -52,7 +65,8 @@ public class Customer{
     public String toString() {
         return "Customer{" +
                 "id=" + id +
-                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", emailAddress='" + emailAddress + '\'' +
                 ", purchases=" + purchases +
                 '}';
     }

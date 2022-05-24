@@ -9,16 +9,16 @@ public class Dealer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column
-    private int permissionLvl;
+    private String name;
 
     @ManyToOne
     @JoinColumn(name = "dealerships_ids")
     private Dealership dealership;
 
-    public Dealer(int permissionLvl, Dealership dealership) {
-        this.permissionLvl = permissionLvl;
+    public Dealer(String name, Dealership dealership) {
+        this.name = name;
         this.dealership = dealership;
     }
 
@@ -33,12 +33,12 @@ public class Dealer {
         this.id = id;
     }
 
-    public int getPermissionLvl() {
-        return permissionLvl;
+    public String getName() {
+        return name;
     }
 
-    public void setPermissionLvl(int permissionLvl) {
-        this.permissionLvl = permissionLvl;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Dealership getDealership() {
@@ -53,7 +53,7 @@ public class Dealer {
     public String toString() {
         return "Dealer{" +
                 "id=" + id +
-                ", permissionLvl=" + permissionLvl +
+                ", name='" + name + '\'' +
                 ", dealership=" + dealership +
                 '}';
     }

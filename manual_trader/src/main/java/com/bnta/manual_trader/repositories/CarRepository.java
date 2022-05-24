@@ -19,4 +19,6 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> getAllCarsAndByBodyType(Bodytype bodyType);
 
+
+
 }
