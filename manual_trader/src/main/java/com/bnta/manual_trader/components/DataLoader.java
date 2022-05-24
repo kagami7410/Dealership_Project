@@ -1,15 +1,13 @@
 package com.bnta.manual_trader.components;
 
 import com.bnta.manual_trader.models.*;
-import com.bnta.manual_trader.repositories.CarRepository;
-import com.bnta.manual_trader.repositories.CustomerRepository;
-import com.bnta.manual_trader.repositories.DealerRepository;
-import com.bnta.manual_trader.repositories.DealershipRepository;
+import com.bnta.manual_trader.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Arrays;
 
 @Component
@@ -26,6 +24,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     CustomerRepository customerRepository;
+
+    @Autowired
+    PurchaseRepository purchaseRepository;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -89,5 +90,20 @@ public class DataLoader implements ApplicationRunner {
 
         customerRepository.saveAll(Arrays.asList(customer1, customer2, customer3, customer4, customer5, customer6, customer7,
                 customer8, customer9,customer10));
+
+        Purchase purchase1 = new Purchase(LocalDate.of(2022,3, 4), customer2, car5);
+        Purchase purchase2 = new Purchase(LocalDate.of(2021,4, 5), customer1, car7);
+        Purchase purchase3 = new Purchase(LocalDate.of(2022,6, 8), customer3, car4);
+        Purchase purchase4 = new Purchase(LocalDate.of(2020,9, 12), customer4, car9);
+        Purchase purchase5 = new Purchase(LocalDate.of(2022,1, 13), customer4, car10);
+        Purchase purchase6 = new Purchase(LocalDate.of(2022,1, 13), customer4, car11);
+        Purchase purchase7 = new Purchase(LocalDate.of(2019,11, 23), customer5, car19);
+        Purchase purchase8 = new Purchase(LocalDate.of(2019,12, 3), customer6, car18);
+        Purchase purchase9 = new Purchase(LocalDate.of(2020,2, 5), customer7, car14);
+        Purchase purchase10 = new Purchase(LocalDate.of(2018,7, 22), customer8, car13);
+        purchaseRepository.saveAll(Arrays.asList(purchase1, purchase2, purchase3, purchase4, purchase5, purchase6,
+                purchase1, purchase1, purchase1, purchase1, purchase1));
+
+
     }
 }

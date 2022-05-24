@@ -18,6 +18,43 @@ public class CarController {
     @Autowired
     CarRepository carRepository;
 
+    // Get car by attributes
+    @GetMapping
+    public ResponseEntity<List<Car>> getCarByAttribute(@RequestParam(required = false, name = "brand") String brand,
+                                                       @RequestParam(required = false, name = "colour") String colour,
+                                                       @RequestParam(required = false, name = "bodyType") Bodytype bodyType,
+                                                       @RequestParam(required = false, name = "year") Integer year,
+                                                       @RequestParam(required = false, name = "price") Integer price){
+        if(brand != null && colour == null && bodyType == null && year == null && price == null){
+            return new ResponseEntity<>(carRepository.findByBrand(year), HttpStatus.OK);
+        }
+        else if(brand != null && colour != null && bodyType == null && year == null && price == null){
+            return new ResponseEntity<>(carRepository.findByBrand(brand) && carRepository.findByColour(colour), HttpStatus.OK);
+        }
+        else if(brand != null && colour != null && bodyType != null && year == null && price == null){
+            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
+        }
+        else if(brand != null && colour != null && bodyType != null && year != null && price == null){
+            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
+        }
+        else if(brand != null && colour != null && bodyType != null && year != null && price == null){
+            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
+        }
+
+        List ListofRequest = List.of(brand, colour, bodyType, year, price);
+        List<Integer>ListofCorrespondingNumber = List.of(1,2,3,4,5);
+        int requestScore;
+
+        for(int i =0; i < ListofRequest.size(); i++){
+            if(ListofRequest.get(i) != null){
+                requestScore = ListofCorrespondingNumber.get(i);
+                if(ListofRequest.get(i+1))
+            }
+        }
+
+
+    }
+
     // GET byBrand
     @GetMapping
     public ResponseEntity<List<Car>> getAllCarsAndByBrand(@RequestParam(required = false, name = "brand") String brand) {
