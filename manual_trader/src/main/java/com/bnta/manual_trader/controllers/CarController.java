@@ -1,6 +1,7 @@
 package com.bnta.manual_trader.controllers;
 
 
+import com.bnta.manual_trader.models.Bodytype;
 import com.bnta.manual_trader.models.Car;
 import com.bnta.manual_trader.repositories.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,40 +18,54 @@ public class CarController {
     @Autowired
     CarRepository carRepository;
 
-
+    // GET byBrand
     @GetMapping
-    public ResponseEntity<List<Car>> getAllCarsAndByBrand(@RequestParam(required = false, name = "brand") String brand ){
-        if (brand != null){
+    public ResponseEntity<List<Car>> getAllCarsAndByBrand(@RequestParam(required = false, name = "brand") String brand) {
+        if (brand != null) {
             return new ResponseEntity(carRepository.findByBrand(brand), HttpStatus.OK);
         }
         return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
     }
 
+    // GET byBodyType
     @GetMapping
-    public ResponseEntity<List<Car>> getAllCarsAndByColour(@RequestParam(required = false, name = "colour") String colour ){
-        if (colour != null){
-            return new ResponseEntity(carRepository.findByColour(colour), HttpStatus.OK);
+    public ResponseEntity<List<Car>> getAllCarsAndByBodyType(@RequestParam(required = false, name = "bodyType") Bodytype bodyType) {
+        if (bodyType != null) {
+            return new ResponseEntity(carRepository.findByBodyType(bodyType), HttpStatus.OK);
         }
         return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
     }
 
+    // GET byColour
     @GetMapping
-    public ResponseEntity<List<Car>> getAllCarsAndByYear(@RequestParam(required = false, name = "carYear") Integer carYear ){
-        if (carYear != null){
+    public ResponseEntity<List<Car>> getAllCarsAndByColour(@RequestParam(required = false, name = "colour") String colour) {
+        if (colour != null) {
+            return new ResponseEntity(carRepository.findByColour(colour), HttpStatus.OK);
+        }
+        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
+    }
+    // GET byYear
+    @GetMapping
+    public ResponseEntity<List<Car>> getAllCarsAndByYear(@RequestParam(required = false, name = "carYear") Integer carYear) {
+        if (carYear != null) {
             return new ResponseEntity(carRepository.findByYear(carYear), HttpStatus.OK);
         }
         return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
     }
 
-
-//    @GetMapping
-//    public ResponseEntity<List<Car>> findByPriceGreaterThan(RequestParam(required = false, name = ""))
-
+    // GET byPrice
+    @GetMapping
+    public ResponseEntity<List<Car>> findByPriceGreaterThan(@RequestParam(required = false, name = "price") Double price) {
+        if (price != null) {
+            return new ResponseEntity(carRepository.findByPriceGreaterThan(price), HttpStatus.OK);
+        }
+        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
+    }
 
 
     // SHOW
     @GetMapping(value = "/{id}")
-    public ResponseEntity<List<Car>> getCarById(@PathVariable Long id){
+    public ResponseEntity<List<Car>> getCarById(@PathVariable Long id) {
         return new ResponseEntity(carRepository.findById(id), HttpStatus.OK);
     }
 
@@ -58,10 +73,9 @@ public class CarController {
     // SHOW
 
 
-
     // POST
     @PostMapping(value = "/new")
-    public ResponseEntity<Car> createCar(@RequestBody Car car){
+    public ResponseEntity<Car> createCar(@RequestBody Car car) {
         return new ResponseEntity<>(carRepository.save(car), HttpStatus.CREATED);
     }
 
@@ -70,7 +84,7 @@ public class CarController {
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car newCar) {
         var foundCar = carRepository.findById(id);
-        if(foundCar.isPresent()){
+        if (foundCar.isPresent()) {
             Car foundCarGet = foundCar.get();
             foundCarGet.setColour(newCar.getColour());
             foundCarGet.setPrice(newCar.getPrice());
@@ -81,12 +95,12 @@ public class CarController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
-    
+
     // DELETE
     @DeleteMapping(value = "remove/{id}")
-    public ResponseEntity<String> deleteCar(@PathVariable Long id){
+    public ResponseEntity<String> deleteCar(@PathVariable Long id) {
         carRepository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
-        
+
     }
 }

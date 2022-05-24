@@ -2,6 +2,8 @@ package com.bnta.manual_trader.controllers;
 
 
 import java.util.List;
+
+import com.bnta.manual_trader.models.Dealer;
 import com.bnta.manual_trader.models.Dealership;
 import com.bnta.manual_trader.repositories.DealershipRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,22 @@ public class DealershipController {
     public ResponseEntity<String> deleteDealership(@PathVariable Long id){
         dealershipRepository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
+    }
+
+    @PutMapping(value = "update/{id}")
+    public ResponseEntity<Dealership> updateDealership(@PathVariable Long id, @RequestBody Dealership newDealership) {
+        var foundDealership = dealershipRepository.findById(id);
+        if (foundDealership.isPresent()) {
+            Dealership foundDealershipGet = foundDealership.get();
+            foundDealershipGet.setDealers(newDealership.getDealers());
+            foundDealershipGet.setCars(newDealership.getCars());
+            foundDealershipGet.setLocation(newDealership.getLocation());
+            foundDealershipGet.setName(newDealership.getName());
+            dealershipRepository.save(foundDealershipGet);
+            return new ResponseEntity(foundDealershipGet, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
 

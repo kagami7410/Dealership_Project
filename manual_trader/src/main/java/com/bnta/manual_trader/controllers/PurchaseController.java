@@ -1,6 +1,9 @@
 package com.bnta.manual_trader.controllers;
 
+import java.time.LocalDate;
 import java.util.List;
+
+import com.bnta.manual_trader.models.Dealer;
 import com.bnta.manual_trader.models.Purchase;
 import com.bnta.manual_trader.repositories.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +24,15 @@ public class PurchaseController {
         return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Purchase>> getAllPurchasedCarsBy
+    // GET byDate
+    @GetMapping
+    public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(@RequestParam(required = false, name = "date") LocalDate date) {
+        if (date != null) {
+            return new ResponseEntity(purchaseRepository.findByDate(date), HttpStatus.OK);
+        }
+        return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
+    }
+
     
     // SHOW
     @GetMapping(value = "/{id}")
@@ -43,4 +53,22 @@ public class PurchaseController {
         return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
     }
 
+    // PUT
+    @PutMapping(value = "update/{id}")
+    public ResponseEntity<Purchase> updatePurchase(@PathVariable Long id, @RequestBody Purchase newPurchase){
+        var foundPurchase = purchaseRepository.findById(id);
+        if (foundPurchase.isPresent()){
+            Purchase foundPurchaseGet = foundPurchase.get();
+            foundPurchaseGet.setCarPurchased(newPurchase.getCarPurchased());
+            foundPurchaseGet.setCustomer(newPurchase.getCustomer());
+            foundPurchaseGet.setDate(newPurchase.getDate());
+            purchaseRepository.save(foundPurchaseGet);
+            return new ResponseEntity(foundPurchaseGet, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }
+
 }
+
