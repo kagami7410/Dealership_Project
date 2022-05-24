@@ -55,6 +55,22 @@ public class CarController {
     public ResponseEntity<Car> createCar(@RequestBody Car car){
         return new ResponseEntity<>(carRepository.save(car), HttpStatus.CREATED);
     }
+
+    // PUT
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<Car> updateCar(@PathVariable Long id, @RequestBody Car newCar) {
+        var foundCar = carRepository.findById(id);
+        if(foundCar.isPresent()){
+            Car foundCarGet = foundCar.get();
+            foundCarGet.setColour(newCar.getColour());
+            foundCarGet.setPrice(newCar.getPrice());
+            foundCarGet.setDealership(newCar.getDealership());
+            carRepository.save(foundCarGet);
+            return new ResponseEntity(foundCarGet, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
     
     // DELETE
     @DeleteMapping(value = "remove/{id}")
