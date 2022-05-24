@@ -15,7 +15,7 @@ public class Car {
     private Long id;
 
     @Column
-    private String bodyType;
+    private Bodytype bodyType;
 
     @Column
     private String brand;
@@ -31,10 +31,10 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "dealerships_id")
-    @JsonIgnoreProperties("cars")
+    @JsonIgnoreProperties({"cars", "dealers"})
     private Dealership dealership;
 
-    public Car(String bodyType, String brand, String colour, int carYear, double price, Dealership dealership) {
+    public Car(Bodytype bodyType, String brand, String colour, int carYear, double price, Dealership dealership) {
         this.bodyType = bodyType;
         this.brand = brand;
         this.colour = colour;
@@ -54,11 +54,11 @@ public class Car {
         this.id = id;
     }
 
-    public String getBodyType() {
+    public Bodytype getBodyType() {
         return bodyType;
     }
 
-    public void setBodyType(String bodyType) {
+    public void setBodyType(Bodytype bodyType) {
         this.bodyType = bodyType;
     }
 
@@ -106,7 +106,7 @@ public class Car {
     public String toString() {
         return "Car{" +
                 "id=" + id +
-                ", bodyType='" + bodyType + '\'' +
+                ", bodyType=" + bodyType +
                 ", brand='" + brand + '\'' +
                 ", colour='" + colour + '\'' +
                 ", carYear=" + carYear +
