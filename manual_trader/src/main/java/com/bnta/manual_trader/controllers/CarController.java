@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.function.Function;
 
 @RestController
 @RequestMapping("cars")
@@ -24,36 +25,64 @@ public class CarController {
                                                        @RequestParam(required = false, name = "colour") String colour,
                                                        @RequestParam(required = false, name = "bodyType") Bodytype bodyType,
                                                        @RequestParam(required = false, name = "year") Integer year,
-                                                       @RequestParam(required = false, name = "price") Integer price){
-        if(brand != null && colour == null && bodyType == null && year == null && price == null){
-            return new ResponseEntity<>(carRepository.findByBrand(year), HttpStatus.OK);
-        }
-        else if(brand != null && colour != null && bodyType == null && year == null && price == null){
-            return new ResponseEntity<>(carRepository.findByBrand(brand) && carRepository.findByColour(colour), HttpStatus.OK);
-        }
-        else if(brand != null && colour != null && bodyType != null && year == null && price == null){
-            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
-        }
-        else if(brand != null && colour != null && bodyType != null && year != null && price == null){
-            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
-        }
-        else if(brand != null && colour != null && bodyType != null && year != null && price == null){
-            return new ResponseEntity<>(carRepository.findByCarYear(year), HttpStatus.OK);
-        }
+                                                       @RequestParam(required = false, name = "price") Double price) {
 
-        List ListofRequest = List.of(brand, colour, bodyType, year, price);
-        List<Integer>ListofCorrespondingNumber = List.of(1,2,3,4,5);
+        List listOfRequest = List.of(brand, colour, bodyType, year, price);
+        List<Integer> listOfCorrespondingNumber = List.of(1, 2, 3, 4, 5);
         int requestScore;
+        int counter = 0;
 
-        for(int i =0; i < ListofRequest.size(); i++){
-            if(ListofRequest.get(i) != null){
-                requestScore = ListofCorrespondingNumber.get(i);
-                if(ListofRequest.get(i+1))
+        for (int i = 0; i < listOfRequest.size(); i++) {
+            if (listOfRequest.get(i) != null) {
+                requestScore = listOfCorrespondingNumber.get(i);
+                requestScore += requestScore;
+                counter += 1;
             }
         }
 
+        switch (requestScore) {
+            case 1:
+                return new ResponseEntity<>(carRepository.findByBrand(brand), HttpStatus.OK);
+            break;
+            case 2:
+                return new ResponseEntity<>(carRepository.findByColour(colour), HttpStatus.OK);
+            break;
+            case 3:
+                if (counter != 2) {
+                    return new ResponseEntity<>(carRepository.findByBodyType(bodyType), HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(carRepository.findByBrandAndColour(brand, colour), HttpStatus.OK);
+                }
+            case 4:
+                if (counter != 2) {
+                    return new ResponseEntity<>(carRepository.findByCarYearGreaterThan(year), HttpStatus.OK);
+                } else {
+                    return new ResponseEntity<>(carRepository.findByBrandAndBodyType(brand, bodyType), HttpStatus.OK);
+                }
+            case 5:
+                if (counter == 2) {
+                    return new ResponseEntity<>(carRepository.findByPriceGreaterThan(price),HttpStatus.OK);
+                }else if(counter == 1){
+                    return new ResponseEntity<>(carRepository.findByBrandAndCarYearGreaterThan(brand, year), HttpStatus.OK);
+                }else {
+                    return new ResponseEntity<>(carRepository.findByBrandAndColourAndBodyType(brand,colour,bodyType), HttpStatus.OK);
+                }
+            case 6:
+                if(counter == 2) {
+                    if(listOfRequest.get(2).equals(null)){
+                        return new ResponseEntity<>(carRepository.findByBrandAndPriceGreaterThan(brand, price), HttpStatus.OK);
+                    }
+                    else {
+                        return new ResponseEntity<>(carRepository.findByColour())
+                    }
 
+                }
+
+
+        }
     }
+
+
 
     // GET byBrand
     @GetMapping

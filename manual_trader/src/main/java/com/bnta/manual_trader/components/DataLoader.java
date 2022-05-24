@@ -102,7 +102,7 @@ public class DataLoader implements ApplicationRunner {
         Purchase purchase9 = new Purchase(LocalDate.of(2020,2, 5), customer7, car14);
         Purchase purchase10 = new Purchase(LocalDate.of(2018,7, 22), customer8, car13);
         purchaseRepository.saveAll(Arrays.asList(purchase1, purchase2, purchase3, purchase4, purchase5, purchase6,
-                purchase1, purchase1, purchase1, purchase1, purchase1));
+                purchase7, purchase8, purchase9, purchase10));
 
 
     }

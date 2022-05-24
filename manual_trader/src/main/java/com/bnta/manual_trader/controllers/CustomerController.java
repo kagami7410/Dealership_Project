@@ -17,12 +17,10 @@ public class CustomerController {
     CustomerRepository customerRepository;
 
     @GetMapping
-    public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(required = false, name ="name") String name){
-        if(name != null){
+    public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(required = false, name = "name") String name) {
+        if (name != null) {
             return new ResponseEntity<>(customerRepository.getCustomerByName(name), HttpStatus.OK);
-        }
-        else
-        {
+        } else {
             return new ResponseEntity<>(customerRepository.findAll(), HttpStatus.OK);
         }
     }
@@ -33,8 +31,22 @@ public class CustomerController {
         return new ResponseEntity(customerRepository.findAll(), HttpStatus.OK);
     }
 
-    //
+    @GetMapping(value = "/{id}")
+    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+        return new ResponseEntity(customerRepository.findById(id), HttpStatus.OK);
+    }
 
+    //POST
+    @PostMapping(value = "/new")
+    public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
+        return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);
+    }
 
+    //DELETE
+    @DeleteMapping(value = "remove/{id}")
+    public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        customerRepository.deleteById(id);
+        return new ResponseEntity<>("Deleted Customer" + id, HttpStatus.NOT_FOUND);
+    }
 
 }
