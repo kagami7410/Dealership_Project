@@ -58,6 +58,17 @@ public class DataLoader implements ApplicationRunner {
         Car car10 = new Car(Bodytype.CONVERTIBLE, "Mercedes-Benz", "Grey", 2018, 25000, dealership4);
         Car car11 = new Car(Bodytype.HATCHBACK, "Ford", "Black", 2014, 7000, dealership4);
         Car car12 = new Car(Bodytype.COUPE, "Volvo", "White", 2013, 6000, dealership5);
+        Car car13 = new Car(Bodytype.ESTATE, "Audi", "Black", 2020, 20200, dealership5);
+        Car car14 = new Car(Bodytype.ESTATE, "Volkswagen", "Black", 2016, 13200, dealership4);
+        Car car15 = new Car(Bodytype.ESTATE, "Mercedes-Benz", "White", 2018, 15800, dealership3);
+        Car car16 = new Car(Bodytype.CONVERTIBLE, "Audi", "Black", 2015, 12600, dealership1);
+        Car car17 = new Car(Bodytype.CONVERTIBLE, "Mazda", "Grey", 2011, 9495, dealership2);
+        Car car18 = new Car(Bodytype.SUV, "Citroen", "White", 2018, 8800, dealership1);
+        Car car19 = new Car(Bodytype.SUV, "Vauxhall", "White", 2017, 10200, dealership5);
+        Car car20 = new Car(Bodytype.SUV, "Mitsubishi", "White", 2013, 6000, dealership5);
+        Car car21 = new Car(Bodytype.SUV, "Mitsubishi", "White", 2013, 6000, dealership5);
+
+
         carRepository.saveAll(Arrays.asList(car1, car2, car3, car4, car5, car6, car7, car8, car9, car10, car11, car12));
     }
 }

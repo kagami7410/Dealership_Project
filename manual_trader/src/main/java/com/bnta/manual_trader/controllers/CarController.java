@@ -26,23 +26,28 @@ public class CarController {
         return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
     }
 
-//    @GetMapping
-//    public ResponseEntity<List<Car>> getAllCarsAndByColour(@RequestParam(required = false, name = "colour") String colour ){
-//        if (colour != null){
-//            return new ResponseEntity(carRepository.findByColour(colour), HttpStatus.OK);
-//        }
-//        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity<List<Car>> getAllCarsAndByColour(@RequestParam(required = false, name = "colour") String colour ){
+        if (colour != null){
+            return new ResponseEntity(carRepository.findByColour(colour), HttpStatus.OK);
+        }
+        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
+    }
+
+    @GetMapping
+    public ResponseEntity<List<Car>> getAllCarsAndByYear(@RequestParam(required = false, name = "carYear") Integer carYear ){
+        if (carYear != null){
+            return new ResponseEntity(carRepository.findByYear(carYear), HttpStatus.OK);
+        }
+        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
+    }
+
 
 //    @GetMapping
-//    public ResponseEntity<List<Car>> getAllCarsAndByYear(@RequestParam(required = false, name = "year") Integer year ){
-//        if (year != null){
-//            return new ResponseEntity(carRepository.findByYear(year), HttpStatus.OK);
-//        }
-//        return new ResponseEntity(carRepository.findAll(), HttpStatus.OK);
-//    }
+//    public ResponseEntity<List<Car>> findByPriceGreaterThan(RequestParam(required = false, name = ""))
 
-    
+
+
     // SHOW
     @GetMapping(value = "/{id}")
     public ResponseEntity<List<Car>> getCarById(@PathVariable Long id){
@@ -50,11 +55,16 @@ public class CarController {
     }
 
 
+    // SHOW
+
+
+
     // POST
     @PostMapping(value = "/new")
     public ResponseEntity<Car> createCar(@RequestBody Car car){
         return new ResponseEntity<>(carRepository.save(car), HttpStatus.CREATED);
     }
+
 
     // PUT
     @PutMapping(value = "/update/{id}")

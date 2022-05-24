@@ -52,4 +52,22 @@ public class DealerController{
         return new ResponseEntity<>("Deleted Dealer " + id, HttpStatus.OK);
     }
 
+    // PUT
+
+    @PutMapping (value = "/update/{id}")
+    public ResponseEntity<Dealer> updateDealer(@PathVariable Long id, @RequestBody Dealer newDealer){
+        var foundDealer = dealerRepository.findById(id);
+        if (foundDealer.isPresent()){
+            Dealer foundDealerGet = foundDealer.get();
+            foundDealerGet.setDealership(newDealer.getDealership());
+            dealerRepository.save(foundDealerGet);
+            return new ResponseEntity(foundDealerGet, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        }
+
+    }
+
 }

@@ -20,6 +20,9 @@ public class PurchaseController {
     public ResponseEntity<List<Purchase>> getAllPurchasedCars() {
         return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
     }
+
+//    @GetMapping
+//    public ResponseEntity<List<Purchase>> getAllPurchasedCarsBy
     
     // SHOW
     @GetMapping(value = "/{id}")
