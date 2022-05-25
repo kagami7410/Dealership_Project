@@ -49,27 +49,4 @@ public interface CarRepository extends JpaRepository<Car, Long> {
 
     List<Car> findByBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(Bodytype bodytype, Integer carYear, Double price);
     List<Car> findByCarYearGreaterThanEqualAndPriceLessThanEqual(Integer carYear, Double price);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    List<Car> getAllCarsAndByBodyType(Bodytype bodyType);
-
-
-
-
 }
