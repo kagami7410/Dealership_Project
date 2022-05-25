@@ -38,7 +38,7 @@ class ManualTraderApplicationTests {
 
     @Test
     public void canFindCarByPriceGreaterThan() {
-        List<Car> carFoundByPriceGreaterThan = carRepository.findByPriceGreaterThanEqual(10000.00);
+        List<Car> carFoundByPriceGreaterThan = carRepository.findByPriceLessThanEqual(10000.00);
         assertThat(carFoundByPriceGreaterThan.size()).isEqualTo(17);
     }
 
