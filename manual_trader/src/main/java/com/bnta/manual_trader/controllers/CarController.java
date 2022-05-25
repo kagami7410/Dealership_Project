@@ -320,7 +320,7 @@ public class CarController {
     @DeleteMapping(value = "remove/{id}")
     public ResponseEntity<String> deleteCar(@PathVariable Long id) {
         carRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Deleted Car ID: " + id, HttpStatus.NOT_FOUND);
 
     }
 }
