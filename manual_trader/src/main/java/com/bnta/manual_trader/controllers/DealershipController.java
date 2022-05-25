@@ -19,13 +19,13 @@ public class DealershipController {
     DealershipRepository dealershipRepository;
 
     @GetMapping
-    public ResponseEntity<List<Dealership>> getAllDealershipAndByLocation(@RequestParam(required = false, name = "name") String name,
-                                                                          @RequestParam(required = false, name = "location")
-                                                                                  String location) {
+    public ResponseEntity<List<Dealership>> getAllDealershipsByNameAndByLocation(@RequestParam(required = false, name = "name") String name,
+                                                                                 @RequestParam(required = false, name = "location")
+                                                                                         String location) {
         if (name != null && location != null) {
-            return new ResponseEntity<>(dealershipRepository.findByNameAndLocation(name, location), HttpStatus.OK);
+            return new ResponseEntity<>(dealershipRepository.findByNameContainingAndLocation(name, location), HttpStatus.OK);
         } else if (name != null && location == null) {
-            return new ResponseEntity<>(dealershipRepository.findByName(name), HttpStatus.OK);
+            return new ResponseEntity<>(dealershipRepository.findByNameContaining(name), HttpStatus.OK);
         } else if (name == null && location != null) {
             return new ResponseEntity<>(dealershipRepository.findByLocation(location), HttpStatus.OK);
         } else {

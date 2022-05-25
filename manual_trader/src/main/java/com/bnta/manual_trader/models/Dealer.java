@@ -1,5 +1,7 @@
 package com.bnta.manual_trader.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Dealer {
 
     @ManyToOne
     @JoinColumn(name = "dealerships_ids")
+    @JsonIgnoreProperties({"cars", "dealers"})
     private Dealership dealership;
 
     public Dealer(String name, Dealership dealership) {

@@ -18,19 +18,13 @@ public class PurchaseController {
     @Autowired
     PurchaseRepository purchaseRepository;
 
-//    // GET
-//    @GetMapping
-//    public ResponseEntity<List<Purchase>> getAllPurchasedCars() {
-//        return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
-//    }
-
-    // GET byDate
+    // GET
     @GetMapping
     public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(@RequestParam(required = false, name = "date") LocalDate date) {
         if (date != null) {
-            return new ResponseEntity(purchaseRepository.findByDate(date), HttpStatus.OK);
+            return new ResponseEntity<>(purchaseRepository.findByDate(date), HttpStatus.OK);
         }
-        return new ResponseEntity(purchaseRepository.findAll(), HttpStatus.OK);
+        return new ResponseEntity<>(purchaseRepository.findAll(), HttpStatus.OK);
     }
 
     
@@ -43,7 +37,7 @@ public class PurchaseController {
     // POST
     @PostMapping(value = "/new")
     public ResponseEntity<Purchase> createPurchase(@RequestBody Purchase purchase) {
-        return new ResponseEntity<>(purchaseRepository.save(purchase), HttpStatus.OK);
+        return new ResponseEntity<>(purchaseRepository.save(purchase), HttpStatus.CREATED);
     }
 
     // DELETE

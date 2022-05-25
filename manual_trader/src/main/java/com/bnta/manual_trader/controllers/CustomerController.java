@@ -13,12 +13,13 @@ import java.util.List;
 @RestController
 @RequestMapping("customers")
 public class CustomerController {
+
     @Autowired
     CustomerRepository customerRepository;
 
     //GET
     @GetMapping
-    public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(required = false, name = "name") String name) {
+    public ResponseEntity<List<Customer>> getCustomerAndByName(@RequestParam(required = false, name = "name") String name) {
         if (name != null) {
             return new ResponseEntity<>(customerRepository.getCustomerByName(name), HttpStatus.OK);
         } else {
@@ -35,7 +36,7 @@ public class CustomerController {
     //POST
     @PostMapping(value = "/new")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
-        return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.OK);
+        return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.CREATED);
     }
 
     //DELETE
