@@ -23,9 +23,9 @@ public class DealerController {
                                                                         @RequestParam(required = false, name = "dealership")
                                                                                 Dealership dealership) {
         if (name != null & dealership != null) {
-            return new ResponseEntity<>(dealerRepository.findByNameAndDealership(name, dealership), HttpStatus.OK);
+            return new ResponseEntity<>(dealerRepository.findByNameContainingAndDealership(name, dealership), HttpStatus.OK);
         } else if (name != null && dealership == null) {
-            return new ResponseEntity<>(dealerRepository.findByName(name), HttpStatus.OK);
+            return new ResponseEntity<>(dealerRepository.findByNameContaining(name), HttpStatus.OK);
         } else if (name == null && dealership != null) {
             return new ResponseEntity<>(dealerRepository.findByDealership(dealership), HttpStatus.OK);
         } else {

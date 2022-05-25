@@ -79,9 +79,9 @@ public class Dealership {
         this.dealers = dealers;
     }
 
-//    public void removeCar(Car car){
-//        this.cars.remove(car);
-//    }
+    public void removeCar(Car car){
+        this.cars.remove(car);
+    }
 
     @Override
     public String toString() {

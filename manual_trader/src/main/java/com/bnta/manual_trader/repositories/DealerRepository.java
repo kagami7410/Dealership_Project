@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
-    List<Dealer> findByNameAndDealership(String name, Dealership dealership);
-    List<Dealer> findByName(String name);
+    List<Dealer> findByNameContainingAndDealership(String name, Dealership dealership);
+    List<Dealer> findByNameContaining(String name);
     List<Dealer> findByDealership(Dealership dealership);
 }
