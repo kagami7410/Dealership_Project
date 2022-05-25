@@ -49,7 +49,7 @@ public class DealerController {
     @DeleteMapping(value = "/remove/{id}")
     public ResponseEntity<String> deleteDealer(@PathVariable Long id) {
         dealerRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted Dealer " + id, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Deleted Dealer ID: " + id, HttpStatus.NOT_FOUND);
     }
 
     // PUT
