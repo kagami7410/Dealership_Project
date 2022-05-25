@@ -40,7 +40,7 @@ public class PurchaseController {
     @Transactional
     @PostMapping(value = "/new")
     public ResponseEntity<Purchase> createPurchase(@RequestBody Purchase purchase) {
-        purchase.getCarPurchased().removeFromDealership(purchase.getCarPurchased());
+//        purchase.getCarPurchased().removeFromDealership(purchase.getCarPurchased());
         return new ResponseEntity<>(purchaseRepository.save(purchase), HttpStatus.CREATED);
     }
 
