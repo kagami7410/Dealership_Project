@@ -45,7 +45,7 @@ public class PurchaseController {
     @DeleteMapping(value = "remove/{id}")
     public ResponseEntity<String> deletePurchase(@PathVariable Long id) {
         purchaseRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Deleted Purchase ID: " + id, HttpStatus.NOT_FOUND);
     }
 
     // PUT
