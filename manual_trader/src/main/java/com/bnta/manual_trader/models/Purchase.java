@@ -1,5 +1,9 @@
 package com.bnta.manual_trader.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -16,6 +20,7 @@ public class Purchase {
 
     @ManyToOne
     @JoinColumn(name = "customers_id")
+    @JsonIgnoreProperties({"purchases"})
     private Customer customer;
 
     @ManyToOne
