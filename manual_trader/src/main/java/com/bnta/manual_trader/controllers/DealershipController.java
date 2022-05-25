@@ -47,7 +47,7 @@ public class DealershipController {
     @DeleteMapping(value = "remove/{id}")
     public ResponseEntity<String> deleteDealership(@PathVariable Long id) {
         dealershipRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Deleted Dealership ID: " + id, HttpStatus.NOT_FOUND);
     }
 
     @PutMapping(value = "update/{id}")
