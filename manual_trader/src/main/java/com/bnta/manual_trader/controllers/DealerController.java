@@ -21,34 +21,17 @@ public class DealerController {
     @GetMapping
     public ResponseEntity<List<Dealer>> getAllDealersByNameOrDealership(@RequestParam(required = false, name = "name") String name,
                                                                         @RequestParam(required = false, name = "dealership")
-                                                                        Dealership dealership) {
+                                                                                Dealership dealership) {
         if (name != null & dealership != null) {
             return new ResponseEntity<>(dealerRepository.findByNameAndDealership(name, dealership), HttpStatus.OK);
         } else if (name != null && dealership == null) {
             return new ResponseEntity<>(dealerRepository.findByName(name), HttpStatus.OK);
         } else if (name == null && dealership != null) {
             return new ResponseEntity<>(dealerRepository.findByDealership(dealership), HttpStatus.OK);
-        } else{
+        } else {
             return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
         }
     }
-
-//    @GetMapping
-//    public ResponseEntity<List<Dealer>> getAllDealersByName(@RequestParam(required = false, name = "name") String name) {
-//        if(name != null) {
-//            return new ResponseEntity(dealerRepository.findDealerByName(name), HttpStatus.OK);
-//        }
-//        return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
-//    }
-
-//    @GetMapping
-//    public ResponseEntity<List<Dealer>> getAllDealersByDealership(@RequestParam(required = false, name = "dealership") Dealership dealership) {
-//        if(dealership != null) {
-//            return new ResponseEntity<>(dealerRepository.findDealerByDealership(dealership), HttpStatus.OK);
-//        }
-//        return new ResponseEntity<>(dealerRepository.findAll(), HttpStatus.OK);
-//    }
-
 
     // SHOW
     @GetMapping(value = "/{id}")
@@ -70,7 +53,6 @@ public class DealerController {
     }
 
     // PUT
-
     @PutMapping(value = "/update/{id}")
     public ResponseEntity<Dealer> updateDealer(@PathVariable Long id, @RequestBody Dealer newDealer) {
         var foundDealer = dealerRepository.findById(id);
@@ -82,7 +64,6 @@ public class DealerController {
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-
     }
 
 }

@@ -19,26 +19,33 @@ public class DealershipController {
     DealershipRepository dealershipRepository;
 
     @GetMapping
-    public ResponseEntity<List<Dealership>> getAllDealershipAndByLocation(@RequestParam(required = false, name ="location") String location){
-        if (location != null){
-            return new ResponseEntity<>(dealershipRepository.findDealershipByLocation(location), HttpStatus.OK);
+    public ResponseEntity<List<Dealership>> getAllDealershipAndByLocation(@RequestParam(required = false, name = "name") String name,
+                                                                          @RequestParam(required = false, name = "location")
+                                                                                  String location) {
+        if (name != null && location != null) {
+            return new ResponseEntity<>(dealershipRepository.findByNameAndLocation(name, location), HttpStatus.OK);
+        } else if (name != null && location == null) {
+            return new ResponseEntity<>(dealershipRepository.findByName(name), HttpStatus.OK);
+        } else if (name == null && location != null) {
+            return new ResponseEntity<>(dealershipRepository.findByLocation(location), HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(dealershipRepository.findAll(), HttpStatus.OK);
         }
-        return new ResponseEntity<>(dealershipRepository.findAll(), HttpStatus.OK);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Dealership> getDealership(@PathVariable Long id){
+    public ResponseEntity<Dealership> getDealership(@PathVariable Long id) {
         return new ResponseEntity(dealershipRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/new")
-    public ResponseEntity<Dealership> createDealership(@RequestBody Dealership dealership){
+    public ResponseEntity<Dealership> createDealership(@RequestBody Dealership dealership) {
         return new ResponseEntity<>(dealershipRepository.save(dealership), HttpStatus.CREATED);
 
     }
 
     @DeleteMapping(value = "remove/{id}")
-    public ResponseEntity<String> deleteDealership(@PathVariable Long id){
+    public ResponseEntity<String> deleteDealership(@PathVariable Long id) {
         dealershipRepository.deleteById(id);
         return new ResponseEntity<>("Deleted", HttpStatus.NOT_FOUND);
     }
