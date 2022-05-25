@@ -8,11 +8,7 @@ import java.util.List;
 
 public interface DealerRepository extends JpaRepository<Dealer, Long> {
 
-    List<Dealer> findDealerByDealership(Dealership dealership);
-
-    List<Dealer> getAllDealersByDealership(Dealership dealership);
-
-    List<Dealer> findDealerByName(String name);
-
-    List<Dealer> getAllDealersByName(String name);
+    List<Dealer> findByNameAndDealership(String name, Dealership dealership);
+    List<Dealer> findByName(String name);
+    List<Dealer> findByDealership(Dealership dealership);
 }

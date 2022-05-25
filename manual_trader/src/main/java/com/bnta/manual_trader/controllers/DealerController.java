@@ -19,8 +19,18 @@ public class DealerController {
 
     // GET
     @GetMapping
-    public ResponseEntity<List<Dealer>> getAllDealers() {
-        return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
+    public ResponseEntity<List<Dealer>> getAllDealersByNameOrDealership(@RequestParam(required = false, name = "name") String name,
+                                                                        @RequestParam(required = false, name = "dealership")
+                                                                        Dealership dealership) {
+        if (name != null & dealership != null) {
+            return new ResponseEntity<>(dealerRepository.findByNameAndDealership(name, dealership), HttpStatus.OK);
+        } else if (name != null && dealership == null) {
+            return new ResponseEntity<>(dealerRepository.findByName(name), HttpStatus.OK);
+        } else if (name == null && dealership != null) {
+            return new ResponseEntity<>(dealerRepository.findByDealership(dealership), HttpStatus.OK);
+        } else{
+            return new ResponseEntity(dealerRepository.findAll(), HttpStatus.OK);
+        }
     }
 
 //    @GetMapping
@@ -56,7 +66,7 @@ public class DealerController {
     @DeleteMapping(value = "/remove/{id}")
     public ResponseEntity<String> deleteDealer(@PathVariable Long id) {
         dealerRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted Dealer " + id, HttpStatus.OK);
+        return new ResponseEntity<>("Deleted Dealer " + id, HttpStatus.NOT_FOUND);
     }
 
     // PUT

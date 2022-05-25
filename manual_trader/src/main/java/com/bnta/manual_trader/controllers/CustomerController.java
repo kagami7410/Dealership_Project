@@ -16,6 +16,7 @@ public class CustomerController {
     @Autowired
     CustomerRepository customerRepository;
 
+    //GET
     @GetMapping
     public ResponseEntity<List<Customer>> getCustomerByName(@RequestParam(required = false, name = "name") String name) {
         if (name != null) {
@@ -25,12 +26,7 @@ public class CustomerController {
         }
     }
 
-//    // GET
-//    @GetMapping
-//    public ResponseEntity<List<Customer>> getAllCustomers() {
-//        return new ResponseEntity(customerRepository.findAll(), HttpStatus.OK);
-//    }
-
+    //SHOW
     @GetMapping(value = "/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
         return new ResponseEntity(customerRepository.findById(id), HttpStatus.OK);
