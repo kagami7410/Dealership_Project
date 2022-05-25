@@ -1,6 +1,7 @@
 package com.bnta.manual_trader.controllers;
 
 import com.bnta.manual_trader.models.Customer;
+import com.bnta.manual_trader.models.Dealer;
 import com.bnta.manual_trader.models.Purchase;
 import com.bnta.manual_trader.repositories.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,22 @@ public class CustomerController {
     @PostMapping(value = "/new")
     public ResponseEntity<Customer> createCustomer(@RequestBody Customer customer) {
         return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.CREATED);
+    }
+
+    //PUT
+    @PutMapping(value = "/update/{id}")
+    public ResponseEntity<Customer> updateCustomer(@PathVariable(value = "id") Long id, @RequestBody Customer newCustomer) {
+        var foundCustomer = customerRepository.findById(id);
+        if (foundCustomer.isPresent()) {
+            Customer foundCustomerGet = foundCustomer.get();
+            foundCustomerGet.setName(newCustomer.getName());
+            foundCustomerGet.setEmailAddress(newCustomer.getEmailAddress());
+            foundCustomerGet.setPurchases(newCustomer.getPurchases());
+            customerRepository.save(foundCustomerGet);
+            return new ResponseEntity(foundCustomerGet, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
     }
 
     //DELETE
