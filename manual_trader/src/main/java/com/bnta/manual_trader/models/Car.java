@@ -102,6 +102,10 @@ public class Car {
         this.dealership = dealership;
     }
 
+    public void removeFromDealership(Car car){
+        this.dealership.removeCar(car);
+    }
+
     @Override
     public String toString() {
         return "Car{" +

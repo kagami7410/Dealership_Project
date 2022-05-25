@@ -37,6 +37,7 @@ public class PurchaseController {
     // POST
     @PostMapping(value = "/new")
     public ResponseEntity<Purchase> createPurchase(@RequestBody Purchase purchase) {
+//        purchase.getCarPurchased().removeFromDealership(purchase.getCarPurchased());
         return new ResponseEntity<>(purchaseRepository.save(purchase), HttpStatus.CREATED);
     }
 
@@ -57,7 +58,7 @@ public class PurchaseController {
             foundPurchaseGet.setCustomer(newPurchase.getCustomer());
             foundPurchaseGet.setDate(newPurchase.getDate());
             purchaseRepository.save(foundPurchaseGet);
-            return new ResponseEntity(foundPurchaseGet, HttpStatus.OK);
+            return new ResponseEntity<>(foundPurchaseGet, HttpStatus.OK);
         } else {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

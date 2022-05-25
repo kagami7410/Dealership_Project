@@ -25,6 +25,7 @@ public class Purchase {
 
     @ManyToOne
     @JoinColumn(name = "cars_id")
+    @JsonIgnoreProperties({"dealership"})
     private Car carPurchased;
 
     public Purchase(LocalDate date, Customer customer, Car carPurchased) {

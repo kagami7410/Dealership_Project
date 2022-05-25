@@ -1,8 +1,6 @@
 package com.bnta.manual_trader.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -22,7 +20,7 @@ public class Customer{
     private String emailAddress;
 
     @OneToMany(mappedBy = "customer")
-    @JsonIgnoreProperties({"customer"})
+    @JsonIgnoreProperties({"customer", "dealership"})
     private List<Purchase> purchases;
 
     public Customer(String name, String emailAddress) {

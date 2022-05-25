@@ -42,8 +42,9 @@ public class CustomerController {
     //DELETE
     @DeleteMapping(value = "remove/{id}")
     public ResponseEntity<String> deleteCustomer(@PathVariable Long id) {
+        String customerName = customerRepository.findById(id).get().getName();
         customerRepository.deleteById(id);
-        return new ResponseEntity<>("Deleted Customer" + id, HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>("Deleted Customer " + id + " " + customerName, HttpStatus.NOT_FOUND);
     }
 
 }
