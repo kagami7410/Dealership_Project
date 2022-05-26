@@ -18,10 +18,11 @@ public class DealershipController {
     @Autowired
     DealershipRepository dealershipRepository;
 
+    // gGET
     @GetMapping
-    public ResponseEntity<List<Dealership>> getAllDealershipsByNameAndByLocation(@RequestParam(required = false, name = "name") String name,
-                                                                                 @RequestParam(required = false, name = "location")
-                                                                                         String location) {
+    public ResponseEntity<List<Dealership>> getAllDealershipsByNameAndByLocation
+            (@RequestParam(required = false, name = "name") String name,
+             @RequestParam(required = false, name = "location") String location) {
         if (name != null && location != null) {
             return new ResponseEntity<>(dealershipRepository.findByNameContainingAndLocation(name, location), HttpStatus.OK);
         } else if (name != null && location == null) {
@@ -33,23 +34,27 @@ public class DealershipController {
         }
     }
 
+    // SHOW
     @GetMapping(value = "/{id}")
     public ResponseEntity<Dealership> getDealership(@PathVariable Long id) {
         return new ResponseEntity(dealershipRepository.findById(id), HttpStatus.OK);
     }
 
+    // POST
     @PostMapping(value = "/new")
     public ResponseEntity<Dealership> createDealership(@RequestBody Dealership dealership) {
         return new ResponseEntity<>(dealershipRepository.save(dealership), HttpStatus.CREATED);
 
     }
 
+    // DELETE
     @DeleteMapping(value = "remove/{id}")
     public ResponseEntity<String> deleteDealership(@PathVariable Long id) {
         dealershipRepository.deleteById(id);
         return new ResponseEntity<>("Deleted Dealership ID: " + id, HttpStatus.NOT_FOUND);
     }
 
+    // PUT
     @PutMapping(value = "update/{id}")
     public ResponseEntity<Dealership> updateDealership(@PathVariable Long id, @RequestBody Dealership newDealership) {
         var foundDealership = dealershipRepository.findById(id);

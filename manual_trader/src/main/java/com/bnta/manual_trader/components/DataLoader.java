@@ -82,7 +82,7 @@ public class DataLoader implements ApplicationRunner {
         Customer customer3 = new Customer("Scarlett", "scarlett987@gmail.com");
         Customer customer4 = new Customer("Jamie", "jamie765@gmail.com");
         Customer customer5 = new Customer("Elsie", "elsie65@yahoo.com");
-        Customer customer6 = new Customer("xavier", "xavier5@hotmail.com");
+        Customer customer6 = new Customer("Xavier", "xavier5@hotmail.com");
         Customer customer7 = new Customer("Phil", "Phil2@gmail.com");
         Customer customer8 = new Customer("Phillipa", "Phillipa2@gmail.com");
         Customer customer9 = new Customer("Lauren", "Lauren142@yahoo.com");
