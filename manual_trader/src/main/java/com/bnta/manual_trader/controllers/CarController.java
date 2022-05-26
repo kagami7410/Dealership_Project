@@ -60,12 +60,12 @@ public class CarController {
             case 1:
                 return new ResponseEntity<>(carRepository.findByBrandIgnoreCase(brand), HttpStatus.OK);
             case 2:
-                return new ResponseEntity<>(carRepository.findByColour(colour), HttpStatus.OK);
+                return new ResponseEntity<>(carRepository.findByColourIgnoreCase(colour), HttpStatus.OK);
             case 3:
                 if (counter != 2) {
                     return new ResponseEntity<>(carRepository.findByBodyType(bodyType), HttpStatus.OK);
                 } else {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColour(brand, colour), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCase(brand, colour), HttpStatus.OK);
                 }
             case 4:
                 if (counter != 2) {
@@ -76,7 +76,7 @@ public class CarController {
             case 5:
                 if (counter == 2) {
                     if (brand == null) {
-                        return new ResponseEntity<>(carRepository.findByColourAndBodyType(colour, bodyType), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndBodyType(colour, bodyType), HttpStatus.OK);
                     } else {
                         return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndCarYearGreaterThanEqual(brand, year), HttpStatus.OK);
                     }
@@ -88,18 +88,18 @@ public class CarController {
                     if (bodyType == null) {
                         return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndPriceLessThanEqual(brand, price), HttpStatus.OK);
                     } else {
-                        return new ResponseEntity<>(carRepository.findByColourAndCarYearGreaterThanEqual(colour, year), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndCarYearGreaterThanEqual(colour, year), HttpStatus.OK);
                     }
                 } else if (counter == 3) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndBodyType(brand, colour, bodyType), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndBodyType(brand, colour, bodyType), HttpStatus.OK);
                 }
             case 7:
                 if (counter == 3) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndCarYearGreaterThanEqual(brand, colour, year), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndCarYearGreaterThanEqual(brand, colour, year), HttpStatus.OK);
                 }
                 if (counter == 2) {
                     if (bodyType == null) {
-                        return new ResponseEntity<>(carRepository.findByColourAndPriceLessThanEqual(colour, price), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndPriceLessThanEqual(colour, price), HttpStatus.OK);
                     } else {
                         return new ResponseEntity<>(carRepository.findByBodyTypeAndCarYearGreaterThanEqual(bodyType, year), HttpStatus.OK);
                     }
@@ -109,7 +109,7 @@ public class CarController {
                     if (colour == null) {
                         return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqual(brand, bodyType, year), HttpStatus.OK);
                     } else {
-                        return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndPriceLessThanEqual(brand, colour, price), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndPriceLessThanEqual(brand, colour, price), HttpStatus.OK);
                     }
                 } else if (counter == 2) {
                     return new ResponseEntity<>(carRepository.findByBodyTypeAndPriceLessThanEqual(bodyType, price), HttpStatus.OK);
@@ -121,32 +121,32 @@ public class CarController {
                     if (colour == null) {
                         return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndBodyTypeAndPriceLessThanEqual(brand, bodyType, price), HttpStatus.OK);
                     } else {
-                        return new ResponseEntity<>(carRepository.findByColourAndBodyTypeAndCarYearGreaterThanEqual(colour, bodyType, year), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqual(colour, bodyType, year), HttpStatus.OK);
                     }
                 } else if (counter == 4) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndBodyTypeAndCarYearGreaterThanEqual(brand, colour, bodyType, year), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqual(brand, colour, bodyType, year), HttpStatus.OK);
                 }
             case 10:
                 if (counter == 3) {
                     if (brand == null) {
-                        return new ResponseEntity<>(carRepository.findByColourAndBodyTypeAndPriceLessThanEqual(colour, bodyType, price), HttpStatus.OK);
+                        return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndBodyTypeAndPriceLessThanEqual(colour, bodyType, price), HttpStatus.OK);
                     } else {
                         return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndCarYearGreaterThanEqualAndPriceLessThanEqual(brand, year, price), HttpStatus.OK);
                     }
                 } else if (counter == 4) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndBodyTypeAndCarYearGreaterThanEqual(brand, colour, bodyType, year), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqual(brand, colour, bodyType, year), HttpStatus.OK);
                 }
             case 11:
                 if (counter == 3) {
-                    return new ResponseEntity<>(carRepository.findByColourAndCarYearGreaterThanEqualAndPriceLessThanEqual(colour, year, price), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndCarYearGreaterThanEqualAndPriceLessThanEqual(colour, year, price), HttpStatus.OK);
                 } else if (counter == 4) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndBodyTypeAndPriceLessThanEqual(brand, colour, bodyType, price), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndBodyTypeAndPriceLessThanEqual(brand, colour, bodyType, price), HttpStatus.OK);
                 }
             case 12:
                 if (counter == 3) {
                     return new ResponseEntity<>(carRepository.findByBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(bodyType, year, price), HttpStatus.OK);
                 } else if (counter == 4) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndCarYearGreaterThanEqualAndPriceLessThanEqual(brand, colour, year, price), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndCarYearGreaterThanEqualAndPriceLessThanEqual(brand, colour, year, price), HttpStatus.OK);
                 }
             case 13:
                 if (counter == 4) {
@@ -154,11 +154,11 @@ public class CarController {
                 }
             case 14:
                 if (counter == 4) {
-                    return new ResponseEntity<>(carRepository.findByColourAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(colour, bodyType, year, price), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByColourIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(colour, bodyType, year, price), HttpStatus.OK);
                 }
             case 15:
                 if (counter == 5) {
-                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(brand, colour, bodyType, year, price), HttpStatus.OK);
+                    return new ResponseEntity<>(carRepository.findByBrandIgnoreCaseAndColourIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(brand, colour, bodyType, year, price), HttpStatus.OK);
                 }
         }
         return new ResponseEntity<>(carRepository.findAll(), HttpStatus.OK);
