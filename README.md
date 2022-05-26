@@ -68,7 +68,7 @@ spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
     - The same logic can be applied to DEALERS, DEALERSHIPS, CUSTOMER & PURCHASE.
 
 - **POST**
-    - *localhost:8080/cars/new/* : Allows you to input each of the attributes to create a new CAR. 
+    - *localhost:8080/cars/new/* : Allow you to input each of the attributes to create a new CAR. 
     - The same logic can be applied to DEALERS, DEALERSHIPS, CUSTOMER & PURCHASE.
 
 - **PUT:**
