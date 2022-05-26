@@ -7,6 +7,7 @@ import com.bnta.manual_trader.models.Dealer;
 import com.bnta.manual_trader.models.Purchase;
 import com.bnta.manual_trader.repositories.PurchaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,9 @@ public class PurchaseController {
 
     // GET
     @GetMapping
-    public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(@RequestParam(required = false, name = "date") LocalDate date) {
+    public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(@RequestParam(required = false, name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         if (date != null) {
-            return new ResponseEntity<>(purchaseRepository.findByDateContaining(date), HttpStatus.OK);
+            return new ResponseEntity<>(purchaseRepository.findByDate(date), HttpStatus.OK);
         }
         return new ResponseEntity<>(purchaseRepository.findAll(), HttpStatus.OK);
     }

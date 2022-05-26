@@ -9,30 +9,30 @@ import java.util.List;
 
 public interface CarRepository extends JpaRepository<Car, Long> {
 
-    List<Car> findByBrand(String brand);
+    List<Car> findByBrandIgnoreCase(String brand);
     List<Car> findByColour(String Colour);
     List<Car> findByCarYearGreaterThanEqual(Integer carYear);
     List<Car> findByPriceLessThanEqual(Double price);
     List<Car> findByBodyType(Bodytype bodytype);
 
 
-    List<Car> findByBrandAndColour(String brand, String colour);
-    List<Car> findByBrandAndBodyType(String brand, Bodytype bodyType);
-    List<Car> findByBrandAndCarYearGreaterThanEqual(String brand, Integer carYear);
-    List<Car> findByBrandAndPriceLessThanEqual(String brand, Double price);
-    List<Car> findByBrandAndColourAndBodyType(String brand, String colour, Bodytype bodytype);
-    List<Car> findByBrandAndColourAndPriceLessThanEqual(String brand, String colour, Double price);
-    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThanEqual(String brand, String colour, Bodytype bodytype, Integer carYear);
-    List<Car> findByBrandAndColourAndBodyTypeAndPriceLessThanEqual(String brand, String colour, Bodytype bodytype, Double price);
-    List<Car> findByBrandAndColourAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, String colour, Bodytype bodytype, Integer carYear, Double price);
-    List<Car> findByBrandAndColourAndCarYearGreaterThanEqual(String brand, String colour, Integer carYear);
+    List<Car> findByBrandIgnoreCaseAndColour(String brand, String colour);
+    List<Car> findByBrandIgnoreCaseAndBodyType(String brand, Bodytype bodyType);
+    List<Car> findByBrandIgnoreCaseAndCarYearGreaterThanEqual(String brand, Integer carYear);
+    List<Car> findByBrandIgnoreCaseAndPriceLessThanEqual(String brand, Double price);
+    List<Car> findByBrandIgnoreCaseAndColourAndBodyType(String brand, String colour, Bodytype bodytype);
+    List<Car> findByBrandIgnoreCaseAndColourAndPriceLessThanEqual(String brand, String colour, Double price);
+    List<Car> findByBrandIgnoreCaseAndColourAndBodyTypeAndCarYearGreaterThanEqual(String brand, String colour, Bodytype bodytype, Integer carYear);
+    List<Car> findByBrandIgnoreCaseAndColourAndBodyTypeAndPriceLessThanEqual(String brand, String colour, Bodytype bodytype, Double price);
+    List<Car> findByBrandIgnoreCaseAndColourAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, String colour, Bodytype bodytype, Integer carYear, Double price);
+    List<Car> findByBrandIgnoreCaseAndColourAndCarYearGreaterThanEqual(String brand, String colour, Integer carYear);
 
-    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThanEqual(String brand, Bodytype bodytype, Integer carYear);
-    List<Car> findByBrandAndBodyTypeAndPriceLessThanEqual(String brand, Bodytype bodytype, Double price);
-    List<Car> findByBrandAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, Integer carYear, Double price);
+    List<Car> findByBrandIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqual(String brand, Bodytype bodytype, Integer carYear);
+    List<Car> findByBrandIgnoreCaseAndBodyTypeAndPriceLessThanEqual(String brand, Bodytype bodytype, Double price);
+    List<Car> findByBrandIgnoreCaseAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, Integer carYear, Double price);
 
-    List<Car> findByBrandAndColourAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, String colour, Integer carYear, Double Price);
-    List<Car> findByBrandAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(String Brand, Bodytype bodytype, Integer carYear, Double Price);
+    List<Car> findByBrandIgnoreCaseAndColourAndCarYearGreaterThanEqualAndPriceLessThanEqual(String brand, String colour, Integer carYear, Double Price);
+    List<Car> findByBrandIgnoreCaseAndBodyTypeAndCarYearGreaterThanEqualAndPriceLessThanEqual(String Brand, Bodytype bodytype, Integer carYear, Double Price);
 
 
     List<Car> findByColourAndBodyType(String colour, Bodytype bodytype);

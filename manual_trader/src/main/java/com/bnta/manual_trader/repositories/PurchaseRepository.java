@@ -8,6 +8,6 @@ import java.util.List;
 
 public interface PurchaseRepository extends JpaRepository<Purchase, Long> {
 
-    List<Purchase> findByDateContaining(LocalDate date);
+    List<Purchase> findByDate(LocalDate date);
 
 }

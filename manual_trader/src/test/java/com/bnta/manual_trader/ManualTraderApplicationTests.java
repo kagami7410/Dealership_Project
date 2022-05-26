@@ -26,7 +26,7 @@ class ManualTraderApplicationTests {
 
     @Test
     public void canFindCarByBrand() {
-        List<Car> carFoundByBrand = carRepository.findByBrand("BMW");
+        List<Car> carFoundByBrand = carRepository.findByBrandIgnoreCase("BMW");
         assertThat(carFoundByBrand.size()).isEqualTo(1);
     }
 
