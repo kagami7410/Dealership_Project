@@ -37,7 +37,8 @@ public class DealershipController {
     // SHOW
     @GetMapping(value = "/{id}")
     public ResponseEntity<Dealership> getDealership(@PathVariable Long id) {
-        return new ResponseEntity(dealershipRepository.findById(id), HttpStatus.OK);
+        var dealership = dealershipRepository.findById(id);
+        return new ResponseEntity(dealership, dealership.isEmpty() ? HttpStatus.NOT_FOUND : HttpStatus.OK);
     }
 
     // POST
