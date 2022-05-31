@@ -31,7 +31,7 @@ Find the car of your dreams!
 - For example: Search for a car by specifying a colour and/or brand
 ---
 UML & ERD Diagram pictures
-![ERD Diagram](https://github.com/kagami7410/Dealership_Project/blob/main/ERD_CARSPROJECT.pdf)
+![ERD Diagram](https://github.com/kagami7410/Dealership_Project/blob/main/ER_Diagram%20Dealership.png)
 
 ![UML Diagram](
 https://github.com/kagami7410/Dealership_Project/blob/main/Dealership_UML_Diagram.png)
