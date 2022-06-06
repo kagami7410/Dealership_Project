@@ -23,13 +23,13 @@ public class PurchaseController {
 
     // GET
     @GetMapping
-    public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(@RequestParam(required = false, name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
+    public ResponseEntity<List<Purchase>> getAllPurchasedCarsByDate(
+            @RequestParam(required = false, name = "date") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate date) {
         if (date != null) {
             return new ResponseEntity<>(purchaseRepository.findByDate(date), HttpStatus.OK);
         }
         return new ResponseEntity<>(purchaseRepository.findAll(), HttpStatus.OK);
     }
-
 
     // SHOW
     @GetMapping(value = "/{id}")
@@ -41,7 +41,6 @@ public class PurchaseController {
     @Transactional
     @PostMapping(value = "/new")
     public ResponseEntity<Purchase> createPurchase(@RequestBody Purchase purchase) {
-//        purchase.getCarPurchased().removeFromDealership(purchase.getCarPurchased());
         return new ResponseEntity<>(purchaseRepository.save(purchase), HttpStatus.CREATED);
     }
 

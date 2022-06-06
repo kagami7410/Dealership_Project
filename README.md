@@ -8,33 +8,20 @@ Find the car of your dreams!
 
 * [Introduction – project overview and Tech Stack](#project-overview)
 * [Instructions for initial set-up](#instructions)
-* [Project Structure](#project-structure)
-* [Methods](#methods)
-   * [Word Service](#_word-service_-wordservice)
-   * [Answer Service](#_answerservice_-answerservice)
-* [Using the API – HTTP Requests](#using-the-api--http-requests)
-   * [Helper mode](#_primary-helper-mode-requests_)
-   * [Competitive mode](#_primary-competitive-mode-requests_)
+* [Restful Routes](#restful-routes)
 
 
 # Project Overview
 - This API was created using Java, Spring boot & PostgreSQL
-- API contains a one to many relationship between models:
-
-
-
-
-
-
+- API contains a one to many relationship between models
 - These include; Car, Customer, Dealer, Purchase, Dealership
 - Each controller has derived queries allowing user to search for each model using specific attributes
 - For example: Search for a car by specifying a colour and/or brand
 ---
 UML & ERD Diagram pictures
-![ERD Diagram](https://github.com/kagami7410/Dealership_Project/blob/main/ER_Diagram%20Dealership.png)
+![ERD Diagram](https://github.com/kagami7410/Dealership_Project/blob/main/images/Entity%20Relationship%20Diagram%20-%20ManualTrader.png)
 
-![UML Diagram](
-https://github.com/kagami7410/Dealership_Project/blob/main/Dealership_UML_Diagram.png)
+![UML Diagram](https://github.com/kagami7410/Dealership_Project/blob/main/images/ManualTrader%20-%20UML.png)
 
 ---
 # Instructions:
