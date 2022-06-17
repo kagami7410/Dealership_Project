@@ -9,6 +9,7 @@ Find the car of your dreams!
 * [Introduction – project overview and Tech Stack](#project-overview)
 * [Instructions for initial set-up](#instructions)
 * [Restful Routes](#restful-routes)
+* [Testing](#testing)
 
 
 # Project Overview
@@ -68,6 +69,9 @@ spring.jpa.properties.hibernate.enable_lazy_load_no_trans=true
 
 
 # Testing
+TDD was used throughout the creation of this project. A test file was created for the derived queries in the Car Controller.
+Example:
+![Car Query test](https://github.com/kagami7410/Dealership_Project/blob/main/images/CarQueryTest.png)
 
 
 #  Dependencies
